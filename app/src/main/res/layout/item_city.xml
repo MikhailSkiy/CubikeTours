@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:id="@+id/top_layout"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/city_image"
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                android:scaleType="centerCrop"
+                android:layout_marginBottom="10dp" />
+
+            <TextView
+                android:id="@+id/city_name"
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:paddingLeft="@dimen/activity_horizontal_margin"
+                android:paddingRight="@dimen/activity_horizontal_margin"
+                android:layout_gravity="bottom"
+                android:gravity="center_vertical"
+                android:background="#5c1b1b1b"
+                android:alpha="0.8"
+                android:textColor="#fff"
+                android:textSize="26sp"
+                android:text="Test"
+                android:layout_alignBottom="@+id/city_image"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" />
+
+            <!-- Labels for tracks. For example: Mаршрутов: 5 -->
+            <LinearLayout
+                android:id="@+id/tracks_layout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_alignParentTop="true"
+                android:layout_alignRight="@+id/linearLayout"
+                android:layout_alignEnd="@+id/linearLayout">
+            <TextView
+                android:id="@+id/track_count_label"
+                android:layout_width="wrap_content"
+                android:layout_height="25dp"
+                android:paddingLeft="@dimen/activity_horizontal_margin"
+                android:layout_gravity="top"
+                android:gravity="right"
+                android:textColor="#fff"
+                android:textSize="18sp"
+                android:text="@string/track_count_label" />
+
+            <TextView
+                android:id="@+id/tracks_count"
+                android:layout_width="wrap_content"
+                android:layout_height="25dp"
+                android:paddingLeft="@dimen/activity_horizontal_margin"
+                android:paddingRight="@dimen/activity_horizontal_margin"
+                android:layout_gravity="top"
+                android:gravity="right"
+                android:paddingEnd="5dp"
+                android:textColor="#fff"
+                android:textSize="18sp"
+                android:text="5"
+                android:layout_alignRight="@+id/track_count_label" />
+            </LinearLayout>
+
+            <!-- Labels for points of interests. For example: Достопримечательностей: 25 -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_gravity="top"
+                android:gravity="right"
+                android:layout_below="@+id/tracks_layout"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:id="@+id/linearLayout">
+
+                <TextView
+                    android:id="@+id/points_of_interests_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="25dp"
+                    android:paddingLeft="@dimen/activity_horizontal_margin"
+                    android:textColor="#fff"
+                    android:textSize="14sp"
+                    android:text="@string/points_of_interests_count_label"
+                    android:layout_below="@+id/track_count_label"
+                   />
+
+                <TextView
+                    android:id="@+id/points_of_interests_count"
+                    android:layout_width="wrap_content"
+                    android:layout_height="25dp"
+                    android:paddingRight="@dimen/activity_horizontal_margin"
+                    android:layout_marginLeft="5dp"
+                    android:textColor="#fff"
+                    android:textSize="14sp"
+                    android:text="26"
+                    />
+            </LinearLayout>
+
+            <!--<TextView-->
+                <!--android:id="@+id/city_description"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="match_parent"-->
+                <!--android:paddingLeft="@dimen/activity_horizontal_margin"-->
+                <!--android:paddingRight="@dimen/activity_horizontal_margin"-->
+                <!--android:paddingTop="5dp"-->
+                <!--android:paddingBottom="2dp"-->
+                <!--android:alpha="0.8"-->
+                <!--android:textColor="#ff272727"-->
+                <!--android:textSize="15dp"-->
+                <!--android:text="Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test"-->
+                <!--android:layout_below="@+id/city_name"-->
+                <!--android:layout_alignParentLeft="true"-->
+                <!--android:layout_alignParentStart="true"-->
+                <!--android:layout_alignParentBottom="true" />-->
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
+
+</LinearLayout>
