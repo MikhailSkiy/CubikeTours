@@ -6,12 +6,14 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import com.example.mikhail.cubike.model.City;
 import com.example.mikhail.cubike.model.Place;
 import com.example.mikhail.cubike.model.Track;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.example.mikhail.cubike.database.DatabaseContract.CitiesTable;
 import static com.example.mikhail.cubike.database.DatabaseContract.PlacesTable;
 import static com.example.mikhail.cubike.database.DatabaseContract.TracksTable;
 
@@ -33,6 +35,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
      */
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase){
+        final String SQL_CREATE_CITIES_TABLE = "CREATE TABLE " + CitiesTable.TABLE_NAME + " (" +
+                CitiesTable._ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
+                CitiesTable.CITY_NAME + " TEXT NOT NULL, " +
+                CitiesTable.CITY_DESCRIPTION + " TEXT NOT NULL, " +
+                CitiesTable.TRACKS_COUNT + " INTEGER NOT NULL, " +
+                CitiesTable.POINTS_COUNT + " INTEGER NOT NULL, " +
+                CitiesTable.CITY_COVER + " BLOB );";
+
         final String SQL_CREATE_TRACKS_TABLE = "CREATE TABLE " + TracksTable.TABLE_NAME + " (" +
                 TracksTable._ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
                 TracksTable.TRACK_TITLE + " TEXT NOT NULL, " +
@@ -60,6 +70,77 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int oldVersion, int newVersion){
         onCreate(sqLiteDatabase);
     }
+
+    //region Methods for working with cities
+
+    /**
+     * Adds all cities from List into database
+     */
+    public void addAllCities(List<City> cities){
+        for (int i=0; i<cities.size();i++){
+            addCity(cities.get(i));
+        }
+    }
+
+    /**
+     * Adds one city object into database
+     */
+    public void addCity(City city){
+        if (city != null){
+            SQLiteDatabase db = this.getWritableDatabase();
+            ContentValues values = putCityIntoContentValues(city);
+            db.insert(CitiesTable.TABLE_NAME,null,values);
+            db.close();
+        } else {
+            throw new IllegalArgumentException("Passed city object is null");
+        }
+    }
+
+    public ContentValues putCityIntoContentValues(City city){
+        ContentValues values = new ContentValues();
+        values.put(CitiesTable.CITY_NAME,city.getName());
+        values.put(CitiesTable.CITY_DESCRIPTION,city.getDescription());
+        values.put(CitiesTable.TRACKS_COUNT,city.getTracksCount());
+        values.put(CitiesTable.POINTS_COUNT,city.getPointsCount());
+        values.put(CitiesTable.CITY_COVER,city.getIcon());
+        return values;
+    }
+
+    /**
+     * Gets all city objects from database
+     */
+    public List<City> getAllCities(){
+        SQLiteDatabase db = this.getWritableDatabase();
+        List<City> cities = new ArrayList<>();
+        String selectQuery = "SELECT * FROM " + CitiesTable.TABLE_NAME;
+        Cursor cursor = db.rawQuery(selectQuery,null);
+        if (cursor.moveToFirst()) {
+            do {
+                City city = getCityFromCursor(cursor);
+                cities.add(city);
+            } while (cursor.moveToNext());
+        }
+        db.close();
+
+        return cities;
+    }
+
+    /**
+     * Gets city object from cursor
+     */
+    private City getCityFromCursor(Cursor cursor){
+        int id = cursor.getInt(cursor.getColumnIndex(CitiesTable._ID));
+        String cityName = cursor.getString(cursor.getColumnIndex(CitiesTable.CITY_NAME));
+        String cityDescription = cursor.getString(cursor.getColumnIndex(CitiesTable.CITY_DESCRIPTION));
+        int tracksCount = cursor.getInt(cursor.getColumnIndex(CitiesTable.TRACKS_COUNT));
+        int placesCount = cursor.getInt(cursor.getColumnIndex(CitiesTable.POINTS_COUNT));
+        byte[] cityCover = cursor.getBlob(cursor.getColumnIndex(CitiesTable.CITY_COVER));
+        City city = new City(id,cityName,cityDescription,tracksCount,placesCount,cityCover);
+
+        return city;
+    }
+
+    //endregion
 
     //region Methods for working with places
 
