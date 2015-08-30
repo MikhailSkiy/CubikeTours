@@ -1,4 +1,4 @@
-package com.example.mikhail.cubike;
+package activities;
 
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
@@ -9,6 +9,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.example.mikhail.cubike.R;
 import com.example.mikhail.cubike.adapters.CityAdapter;
 import com.example.mikhail.cubike.model.CityManager;
 

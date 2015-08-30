@@ -17,6 +17,9 @@ public class City {
     private int pointsCount_;
     private byte[] icon_;
 
+
+    public City(){}
+
     public City(int cityId_, String name_, String description_, int tracksCount_, int pointsCount_, byte[] icon_) {
         this.cityId_ = cityId_;
         this.name_ = name_;

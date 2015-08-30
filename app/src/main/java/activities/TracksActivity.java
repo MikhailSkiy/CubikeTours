@@ -1,4 +1,4 @@
-package com.example.mikhail.cubike;
+package activities;
 
 import android.content.Context;
 import android.content.Intent;
@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
+import com.example.mikhail.cubike.R;
 import com.example.mikhail.cubike.adapters.TrackAdapter;
 import com.example.mikhail.cubike.interfaces.UIactions;
 import com.example.mikhail.cubike.managers.RequestManager;
@@ -42,7 +43,7 @@ public class TracksActivity extends FragmentActivity implements UIactions{
                 Log.v("Position", Integer.toString(position));
                 int itemId = previews_.get(position).getId_();
 
-                Intent intent = new Intent(TracksActivity.this,MapActivity.class);
+                Intent intent = new Intent(TracksActivity.this, MapActivity.class);
                 intent.putExtra("SelectedItemId",itemId);
                 startActivity(intent);
             }

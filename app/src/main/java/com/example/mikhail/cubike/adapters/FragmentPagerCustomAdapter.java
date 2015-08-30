@@ -6,9 +6,9 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
-import com.example.mikhail.cubike.PlaceListFragment;
+import activities.PlaceListFragment;
 import com.example.mikhail.cubike.R;
-import com.example.mikhail.cubike.TrackMapFragment;
+import activities.TrackMapFragment;
 
 /**
  * Created by Mikhail on 04.08.2015.

@@ -1,4 +1,4 @@
-package com.example.mikhail.cubike;
+package activities;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -11,6 +11,7 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.example.mikhail.cubike.R;
 import com.example.mikhail.cubike.adapters.PlacesAdapter;
 import com.example.mikhail.cubike.database.DatabaseHelper;
 import com.example.mikhail.cubike.interfaces.PlaceFragmentListener;

@@ -1,4 +1,4 @@
-package com.example.mikhail.cubike;
+package activities;
 
 import android.content.Context;
 import android.content.Intent;
@@ -10,6 +10,7 @@ import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.widget.ListView;
 
+import com.example.mikhail.cubike.R;
 import com.example.mikhail.cubike.adapters.FragmentPagerCustomAdapter;
 import com.example.mikhail.cubike.database.DatabaseHelper;
 import com.example.mikhail.cubike.interfaces.UIactions;
