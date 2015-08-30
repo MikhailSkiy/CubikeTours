@@ -1,6 +1,7 @@
 package activities;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -9,7 +10,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import com.example.mikhail.cubike.R;
 import com.example.mikhail.cubike.adapters.PlacesAdapter;
@@ -83,7 +83,7 @@ public class PlaceListFragment extends Fragment {
     }
 
 
-    public void updateUI(List<Preview> placesPreviews) {
+    public void updateUI(final List<Preview> placesPreviews) {
         Context context = this.getActivity();
         if (context!=null){
             Log.v("COntext","Not null");
@@ -97,15 +97,11 @@ public class PlaceListFragment extends Fragment {
         listView_.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                switch (position) {
-                    case 0:
-                        Toast.makeText(getActivity(), "First item was clicked", Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(getActivity(), DetailsActivity.class);
+                intent.putExtra("PlaceId", placesPreviews.get(position).getId_());
+                startActivity(intent);
 
-                        break;
-                    case 1:
-                        Toast.makeText(getActivity(), "2 item was clicked", Toast.LENGTH_LONG).show();
-                        break;
-                }
+
             }
         });
 

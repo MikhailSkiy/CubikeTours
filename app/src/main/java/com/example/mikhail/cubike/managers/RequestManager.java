@@ -109,6 +109,7 @@ public class RequestManager {
         List<Preview> previews = new ArrayList<>();
         for (int i=0;i<places.size();i++){
             Preview preview = new Preview();
+            preview.setId_(places.get(i).getId_());
             preview.setTitle_(places.get(i).getTitle());
             preview.setDescription_(places.get(i).getShortDescription());
             preview.setIcon_(places.get(i).getIcon());

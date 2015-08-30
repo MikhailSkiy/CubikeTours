@@ -86,4 +86,12 @@ public class Place {
     public int getTrackId(){
         return this.trackId_;
     }
+
+    public int getId_() {
+        return id_;
+    }
+
+    public void setId_(int id_) {
+        this.id_ = id_;
+    }
 }
