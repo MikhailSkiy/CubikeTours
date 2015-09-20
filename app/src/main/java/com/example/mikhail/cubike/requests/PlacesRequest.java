@@ -24,7 +24,7 @@ import java.util.List;
  */
 public class PlacesRequest {
 
-    private final static String BASE_REQUEST = "http://192.168.10.2:9000/api/values/";
+    private final static String BASE_REQUEST = "http://192.168.10.4:9000/api/values/";
 
     private final static String TITLE_KEY = "Title";
     private final static String SHORT_DESCRIPTION_KEY = "ShortDescription";

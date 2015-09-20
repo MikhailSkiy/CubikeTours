@@ -79,13 +79,17 @@ public class CityAdapter extends RecyclerView.Adapter<CityAdapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(ViewHolder viewHolder, int i) {
-        Log.v("Adapter",Integer.toString(i));
+        Log.v("Adapter", Integer.toString(i));
         City city = cities_.get(i);
-        viewHolder.cityName.setText(city.getName());
         if (city.getName() == "Taganrog") {
             viewHolder.cityImage.setImageDrawable(context_.getResources().getDrawable(R.drawable.taganrog));
-        } else {
+            viewHolder.cityName.setText(context_.getResources().getString(R.string.taganrog));
+        } if (city.getName()  == "Rostov"){
             viewHolder.cityImage.setImageDrawable(context_.getResources().getDrawable(R.drawable.rostov));
+            viewHolder.cityName.setText(context_.getResources().getString(R.string.rostov));
+        } if (city.getName() == "Novocherkassk") {
+            viewHolder.cityImage.setImageDrawable(context_.getResources().getDrawable(R.drawable.novocherkassk));
+            viewHolder.cityName.setText(context_.getResources().getString(R.string.novocherkassk));
         }
         viewHolder.trackCountLabel.setText(context_.getResources().getString(R.string.track_count_label));
         viewHolder.pointsOfInterestsLabel.setText(context_.getResources().getString(R.string.points_of_interests_count_label));

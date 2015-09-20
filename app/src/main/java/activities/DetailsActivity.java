@@ -58,7 +58,16 @@ public class DetailsActivity extends AppCompatActivity {
 
         // Set value to image
         ImageView imageView = (ImageView)findViewById(R.id.image);
-        imageView.setImageDrawable(getResources().getDrawable(R.drawable.faina));
+        if (selectedPlace.getId_() == 8){
+            imageView.setImageDrawable(getResources().getDrawable(R.drawable.octsquare));
+        }
+        if (selectedPlace.getId_() == 9) {
+            imageView.setImageDrawable(getResources().getDrawable(R.drawable.faina));
+        }
+
+        if (selectedPlace.getId_() == 10){
+            imageView.setImageDrawable(getResources().getDrawable(R.drawable.kobilin_home));
+        }
     }
 
     @Override

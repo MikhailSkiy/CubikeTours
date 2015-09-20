@@ -1,6 +1,10 @@
 <resources>
     <string name="app_name">Cubike</string>
 
+    <string name="taganrog">Таганрог</string>
+    <string name="rostov">Ростов-на-Дону</string>
+    <string name="novocherkassk">Новочеркасск</string>
+
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
     <string name="action_map">Карта</string>
