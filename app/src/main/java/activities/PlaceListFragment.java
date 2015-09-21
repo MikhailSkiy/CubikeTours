@@ -18,8 +18,10 @@ import com.example.mikhail.cubike.interfaces.PlaceFragmentListener;
 import com.example.mikhail.cubike.managers.RequestManager;
 import com.example.mikhail.cubike.model.Place;
 import com.example.mikhail.cubike.model.Preview;
+import com.example.mikhail.cubike.utily.UtilMethods;
 import com.google.android.gms.maps.SupportMapFragment;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -33,8 +35,8 @@ public class PlaceListFragment extends Fragment {
     private PlaceFragmentListener mCallback;
     PlacesAdapter placesAdapter;
     RequestManager manager_ ;
-    List<Preview> previews_;
-    private DatabaseHelper helper_;
+    List<Preview> previews_ = new ArrayList<>();
+   // private DatabaseHelper helper_;
     private List<Place> foundPlaces_;
     private int selectedTrackId;
 
@@ -58,8 +60,35 @@ public class PlaceListFragment extends Fragment {
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        manager_ = new RequestManager((MapActivity) getActivity());
-        manager_.getPlacesByTrackId(selectedTrackId);
+      //  manager_ = new RequestManager((MapActivity) getActivity());
+      //  manager_.getPlacesByTrackId(selectedTrackId);
+
+        byte [] icon = UtilMethods.getBytesFromDrawable(getResources().getDrawable(R.drawable.place_ranevskaya));
+
+        Preview preview = new Preview();
+        preview.setId_(9);
+        preview.setTitle_("Title");
+        preview.setDescription_("Description");
+        preview.setIcon_(icon);
+        preview.setLatitude(23.3);
+        preview.setLongitude(34.5);
+
+
+        byte [] icon2 = UtilMethods.getBytesFromDrawable(getResources().getDrawable(R.drawable.place_marin_school));
+
+        Preview preview2 = new Preview();
+        preview.setId_(9);
+        preview.setTitle_("Title");
+        preview.setDescription_("Description");
+        preview.setIcon_(icon);
+        preview.setLatitude(23.3);
+        preview.setLongitude(34.5);
+
+
+        previews_.add(preview);
+        previews_.add(preview2);
+
+        updateUI(previews_);
     }
 
     @Override

@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import com.example.mikhail.cubike.R;
 import com.example.mikhail.cubike.model.Preview;
+import com.example.mikhail.cubike.utily.UtilMethods;
 
 import java.util.List;
 
@@ -57,7 +58,10 @@ public class PlacesAdapter extends ArrayAdapter<Preview>{
         viewHolder.descriptionText_.setText(getItem(position).getDescription_());
 
         if (getItem(position).getIcon_() != null ){
-            Bitmap bmp1 = BitmapFactory.decodeByteArray(getItem(position).getIcon_(), 0, getItem(position).getIcon_().length);
+            Bitmap bitmap = BitmapFactory.decodeByteArray(getItem(position).getIcon_(), 0, getItem(position).getIcon_().length);
+            int width = bitmap.getWidth();
+          Bitmap bmp1 = UtilMethods.getRoundedCroppedBitmap(BitmapFactory.decodeByteArray(getItem(position).getIcon_(), 0, getItem(position).getIcon_().length),width);
+           // Bitmap bmp1 = BitmapFactory.decodeByteArray(getItem(position).getIcon_(), 0, getItem(position).getIcon_().length);
             viewHolder.icon_.setImageBitmap(bmp1);
         }
 

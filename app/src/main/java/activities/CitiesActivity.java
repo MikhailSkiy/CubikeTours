@@ -11,7 +11,13 @@ import android.view.MenuItem;
 
 import com.example.mikhail.cubike.R;
 import com.example.mikhail.cubike.adapters.CityAdapter;
+import com.example.mikhail.cubike.database.DatabaseHelper;
 import com.example.mikhail.cubike.model.CityManager;
+import com.example.mikhail.cubike.model.Track;
+import com.example.mikhail.cubike.utily.UtilMethods;
+
+import java.io.IOException;
+import java.util.List;
 
 
 public class CitiesActivity extends ActionBarActivity {
@@ -26,6 +32,12 @@ public class CitiesActivity extends ActionBarActivity {
         recyclerView_ = (RecyclerView)findViewById(R.id.cities_recycler_view);
         recyclerView_ .setLayoutManager(new LinearLayoutManager(this));
         recyclerView_.setItemAnimator(new DefaultItemAnimator());
+
+       DatabaseHelper dbHelper = new DatabaseHelper(this);
+        dbHelper.openDataBase();
+        List<Track> trackList = dbHelper.getAllTracks();
+
+
 
         cityAdapter_ = new CityAdapter(CityManager.getInstance().getCities(), R.layout.item_city, this,
                 new CityAdapter.onCityItemListener() {

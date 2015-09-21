@@ -13,11 +13,12 @@ import android.widget.TextView;
 import com.example.mikhail.cubike.R;
 import com.example.mikhail.cubike.database.DatabaseHelper;
 import com.example.mikhail.cubike.model.Place;
+import com.example.mikhail.cubike.utily.UtilMethods;
 
 
 public class DetailsActivity extends AppCompatActivity {
 
-    DatabaseHelper helper_;
+   // DatabaseHelper helper_;
     private CollapsingToolbarLayout collapsingToolbarLayout_;
     private int selectedPlaceId_;
     @Override
@@ -31,16 +32,23 @@ public class DetailsActivity extends AppCompatActivity {
         selectedPlaceId_ = extras.getInt("PlaceId", 0);
 
         // Get info about place from database
-        helper_ = new DatabaseHelper(this);
-        Place selectedPlace = helper_.getPlaceById(selectedPlaceId_);
+        //helper_ = new DatabaseHelper(this);
+      //  Place selectedPlace = helper_.getPlaceById(selectedPlaceId_);
+        String placeTitle = "Lalala";
+        String placeDescription = "Desc";
+        Place selectedPlace = new Place(placeTitle,placeDescription);
+        selectedPlace.setId_(9);
 
         setSupportActionBar((Toolbar) findViewById(R.id.toolbar));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         // Get title, description and image of selected place
-        String placeTitle = selectedPlace.getTitle();
-        String placeDescription = selectedPlace.getFullDescription();
-        byte[] placeImage = selectedPlace.getIcon();
+//        String placeTitle = selectedPlace.getTitle();
+//        String placeDescription = selectedPlace.getFullDescription();
+//        byte[] placeImage = selectedPlace.getIcon();
+
+
+        byte[] placeImage = UtilMethods.getBytesFromDrawable(getResources().getDrawable(R.drawable.rane));
 
         // Set values to UI
         collapsingToolbarLayout_ = (CollapsingToolbarLayout)findViewById(R.id.collapsing_toolbar);
@@ -59,10 +67,10 @@ public class DetailsActivity extends AppCompatActivity {
         // Set value to image
         ImageView imageView = (ImageView)findViewById(R.id.image);
         if (selectedPlace.getId_() == 8){
-            imageView.setImageDrawable(getResources().getDrawable(R.drawable.octsquare));
+            imageView.setImageDrawable(getResources().getDrawable(R.drawable.place_square));
         }
         if (selectedPlace.getId_() == 9) {
-            imageView.setImageDrawable(getResources().getDrawable(R.drawable.faina));
+            imageView.setImageDrawable(getResources().getDrawable(R.drawable.rane));
         }
 
         if (selectedPlace.getId_() == 10){

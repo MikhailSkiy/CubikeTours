@@ -32,7 +32,7 @@ public class MapActivity extends FragmentActivity implements UIactions {
     int selectedTrackId;
     FragmentPagerAdapter adapterViewPager;
     static Context context_;
-    private DatabaseHelper helper_;
+   // private DatabaseHelper helper_ = new DatabaseHelper(this);
     private List<Place> foundPlaces_;
 
      @Override
@@ -40,6 +40,8 @@ public class MapActivity extends FragmentActivity implements UIactions {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_map);
          context_ = getApplicationContext();
+
+       //  helper_.getReadableDatabase();
 
         // Gets selected track id
         Intent intent = getIntent();

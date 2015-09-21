@@ -3,6 +3,7 @@ package com.example.mikhail.cubike.adapters;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +13,7 @@ import android.widget.TextView;
 
 import com.example.mikhail.cubike.R;
 import com.example.mikhail.cubike.model.Preview;
+import com.example.mikhail.cubike.utily.UtilMethods;
 
 import java.util.List;
 
@@ -78,7 +80,13 @@ public class TrackAdapter extends ArrayAdapter<Preview>{
         viewHolder.lengthText_.setText(Integer.toString(getItem(position).getLength_()));
 
         if (getItem(position).getIcon_()!= null) {
-            Bitmap bmp1 = BitmapFactory.decodeByteArray(getItem(position).getIcon_(), 0, getItem(position).getIcon_().length);
+            Bitmap bitmap = BitmapFactory.decodeByteArray(getItem(position).getIcon_(), 0, getItem(position).getIcon_().length);
+            int width = bitmap.getWidth();
+            Bitmap bmp1 = UtilMethods.getRoundedCroppedBitmap(BitmapFactory.decodeByteArray(getItem(position).getIcon_(), 0, getItem(position).getIcon_().length), width);
+
+          //  Drawable a = getContext().getResources().getDrawable(R.drawable.round_place_ranevskya);
+           // viewHolder.icon_.setImageDrawable(a);
+
             viewHolder.icon_.setImageBitmap(bmp1);
         }
 
