@@ -39,25 +39,7 @@ public class TracksActivity extends FragmentActivity implements UIactions{
 
         listView_ = (ListView) this.findViewById(R.id.track_list);
 
-       // manager_.getTracks();
-
-        // Create track
-        int id = 8;
-        int duration = 20;
-        int length = 20;
-        String title = "Welcome to taganrog";
-        String description = "Some description";
-        int rating = 5;
-       // byte [] icon = UtilMethods.getBytesFromDrawable(getResources().getDrawable(R.drawable.round_place_ranevskya));
-        byte [] icon = UtilMethods.getBytesFromDrawable(getResources().getDrawable(R.drawable.place_ranevskaya));
-        Track track = new Track(id,title,description,duration,length,rating,icon);
-        Track track2 = new Track(id,title,description,duration,length,rating,UtilMethods.getBytesFromDrawable(getResources().getDrawable(R.drawable.place_park)));
-
-        Preview preview = new Preview(track.getTrackId(),track.getTitle(),track.getDescription(),track.getDuration(),track.getLength(),track.getIcon());
-        Preview preview2 = new Preview(track2.getTrackId(),track2.getTitle(),track2.getDescription(),track2.getDuration(),track2.getLength(),track2.getIcon());
-        previews_.add(preview);
-        previews_.add(preview2);
-
+        manager_.getTracks();
 
 
         listView_.setOnItemClickListener(new AdapterView.OnItemClickListener() {

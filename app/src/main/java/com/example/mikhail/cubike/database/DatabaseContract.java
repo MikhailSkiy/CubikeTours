@@ -50,5 +50,4 @@ public class DatabaseContract {
         public static final String LONGITUDE = "longitude";
         public static final String TRACK_ID = "track_id";
     }
-
 }

@@ -30,7 +30,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     // When the database schema was changed, you must increment the database version
     private static final int DATABASE_VERSION = 1;
-    static final String DATABASE_NAME = "new_db.db";
+    static final String DATABASE_NAME = "simple_db.sqlite";
     private static final String DB_PATH_SUFFIX = "/databases/";
     private static String DB_PATH = "/data/data/com.example.mikhail.cubike/databases/";
     Context context_;
