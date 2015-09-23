@@ -61,7 +61,9 @@ public class PlaceListFragment extends Fragment {
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         manager_ = new RequestManager((MapActivity) getActivity());
-        manager_.getPlacesByTrackId(selectedTrackId);
+        if (selectedTrackId!=0) {
+            manager_.getPlacesByTrackId(selectedTrackId);
+        }
 
 
 

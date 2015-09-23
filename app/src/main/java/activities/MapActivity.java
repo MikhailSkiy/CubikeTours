@@ -49,6 +49,7 @@ public class MapActivity extends FragmentActivity implements UIactions {
         selectedTrackId = extras.getInt("SelectedItemId", 0);
 
          Bundle bundle = new Bundle();
+
          bundle.putInt("Id",selectedTrackId );
 
          vpPager = (ViewPager) findViewById(R.id.pager);
@@ -65,7 +66,7 @@ public class MapActivity extends FragmentActivity implements UIactions {
              @Override
              public void onPageSelected(int position) {
                  Log.v("Page","onPageSelected");
-                 // showPlaces(position,places_);
+                 updateCurrentFragment();
              }
 
              @Override
@@ -73,10 +74,6 @@ public class MapActivity extends FragmentActivity implements UIactions {
                  Log.v("Page","onPageScrollStateChanged");
              }
          });
-
-
-
-
     }
 
     @Override
@@ -84,13 +81,9 @@ public class MapActivity extends FragmentActivity implements UIactions {
         return context_;
     }
 
-
-
     @Override
     public void onResume(){
         super.onResume();
-
-
     }
 
     public void showPlaces(int currentItemIndex, List<Preview> placesPreviews){
@@ -109,9 +102,7 @@ public class MapActivity extends FragmentActivity implements UIactions {
         }
     }
 
-    public void updateUI(List<Preview> placesPreviews) {
-        places_ = placesPreviews;
-        Log.v("Places",Integer.toString(placesPreviews.size()));
+    private void updateCurrentFragment(){
         int index = vpPager.getCurrentItem();
         FragmentPagerCustomAdapter adapter = ((FragmentPagerCustomAdapter)vpPager.getAdapter());
 
@@ -119,13 +110,20 @@ public class MapActivity extends FragmentActivity implements UIactions {
         if ( currentFragment instanceof PlaceListFragment){
             Log.v("IN"," PlaceListFragmen");
             currentFragment = (PlaceListFragment)adapter.instantiateItem(vpPager,index);
-            ((PlaceListFragment) currentFragment).updateUI(placesPreviews);
+            ((PlaceListFragment) currentFragment).updateUI(places_);
         }
 
         if (currentFragment instanceof TrackMapFragment) {
             Log.v("IN","TrackMapFragment");
-            ((TrackMapFragment)currentFragment).updateUI(placesPreviews);
+            ((TrackMapFragment)currentFragment).updateUI(places_);
         }
+    }
+
+    public void updateUI(List<Preview> placesPreviews) {
+        places_ = placesPreviews;
+        Log.v("Places",Integer.toString(placesPreviews.size()));
+        updateCurrentFragment();
+
 
 
      //   PlaceListFragment placeListFragment = (PlaceListFragment) adapter.instantiateItem(vpPager,index);

@@ -16,7 +16,10 @@ import com.example.mikhail.cubike.model.Place;
 import com.example.mikhail.cubike.utily.UtilMethods;
 
 
+
 public class DetailsActivity extends AppCompatActivity {
+
+    private DatabaseHelper helper_ = new DatabaseHelper(this);
 
    // DatabaseHelper helper_;
     private CollapsingToolbarLayout collapsingToolbarLayout_;
@@ -32,50 +35,74 @@ public class DetailsActivity extends AppCompatActivity {
         selectedPlaceId_ = extras.getInt("PlaceId", 0);
 
         // Get info about place from database
-        //helper_ = new DatabaseHelper(this);
-      //  Place selectedPlace = helper_.getPlaceById(selectedPlaceId_);
-        String placeTitle = "Lalala";
-        String placeDescription = "Desc";
-        Place selectedPlace = new Place(placeTitle,placeDescription);
-        selectedPlace.setId_(9);
+        helper_ = new DatabaseHelper(this);
+        Place selectedPlace = helper_.getPlaceById(selectedPlaceId_);
+
+
+
 
         setSupportActionBar((Toolbar) findViewById(R.id.toolbar));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         // Get title, description and image of selected place
-//        String placeTitle = selectedPlace.getTitle();
-//        String placeDescription = selectedPlace.getFullDescription();
-//        byte[] placeImage = selectedPlace.getIcon();
+        String placeTitle = selectedPlace.getTitle();
+        String placeDescription = selectedPlace.getFullDescription();
+        byte[] placeImage = selectedPlace.getIcon();
 
 
-        byte[] placeImage = UtilMethods.getBytesFromDrawable(getResources().getDrawable(R.drawable.rane));
+
 
         // Set values to UI
         collapsingToolbarLayout_ = (CollapsingToolbarLayout)findViewById(R.id.collapsing_toolbar);
 
         // Set values to collapsingToolBar
-        collapsingToolbarLayout_.setTitle(placeTitle);
+       // collapsingToolbarLayout_.setTitle(placeTitle);
         collapsingToolbarLayout_.setExpandedTitleColor(getResources().getColor(R.color.background_floating_material_dark));
         collapsingToolbarLayout_.setCollapsedTitleTextColor(getResources().getColor(R.color.accent_material_dark));
 
         // Set values to textViews (Title,Description)
         TextView cardTitle = (TextView)findViewById(R.id.title);
-        cardTitle.setText(getResources().getString(R.string.description_label));
+        cardTitle.setText(placeTitle);
         TextView cardFullDescription = (TextView) findViewById(R.id.description);
         cardFullDescription.setText(placeDescription);
 
         // Set value to image
         ImageView imageView = (ImageView)findViewById(R.id.image);
-        if (selectedPlace.getId_() == 8){
+        if (selectedPlace.getId_() == 1){
             imageView.setImageDrawable(getResources().getDrawable(R.drawable.place_square));
         }
-        if (selectedPlace.getId_() == 9) {
+        if (selectedPlace.getId_() == 2) {
             imageView.setImageDrawable(getResources().getDrawable(R.drawable.rane));
         }
 
-        if (selectedPlace.getId_() == 10){
+        if (selectedPlace.getId_() == 3){
             imageView.setImageDrawable(getResources().getDrawable(R.drawable.kobilin_home));
         }
+
+        if (selectedPlace.getId_() == 4){
+            imageView.setImageDrawable(getResources().getDrawable(R.drawable.ladohin));
+        }
+
+        if (selectedPlace.getId_() == 5) {
+            imageView.setImageDrawable(getResources().getDrawable(R.drawable.theater));
+        }
+
+        if (selectedPlace.getId_() == 6){
+            imageView.setImageDrawable(getResources().getDrawable(R.drawable.library));
+        }
+        if (selectedPlace.getId_() == 7){
+            imageView.setImageDrawable(getResources().getDrawable(R.drawable.park));
+        }
+
+        if (selectedPlace.getId_() == 8){
+            imageView.setImageDrawable(getResources().getDrawable(R.drawable.marin_school));
+        }
+
+        if (selectedPlace.getId_() == 9){
+            imageView.setImageDrawable(getResources().getDrawable(R.drawable.court));
+        }
+
+
     }
 
     @Override
