@@ -20,12 +20,12 @@ import java.util.List;
 /**
  * Created by Mikhail on 19.07.2015.
  */
-public class TrackAdapter extends ArrayAdapter<Preview>{
+public class TrackAdapter extends ArrayAdapter<Preview> {
 
-    private final int VIEW_TYPE_CURRENT_CITY= 0;
+    private final int VIEW_TYPE_CURRENT_CITY = 0;
     private final int VIEW_TYPE_TRACKS = 1;
 
-    private static class ViewHolder{
+    private static class ViewHolder {
         TextView titleText_;
         TextView descriptionText_;
         TextView durationText_;
@@ -36,28 +36,22 @@ public class TrackAdapter extends ArrayAdapter<Preview>{
         ImageView length_;
     }
 
-    public TrackAdapter(Context context,List<Preview> values){
-        super(context,R.layout.track_list_item,values);
+    public TrackAdapter(Context context, List<Preview> values) {
+        super(context, R.layout.track_list_item, values);
     }
 
     @Override
-   public int getItemViewType(int position){
+    public int getItemViewType(int position) {
         return (position == 0) ? VIEW_TYPE_CURRENT_CITY : VIEW_TYPE_TRACKS;
     }
 
     @Override
-    public int getViewTypeCount(){
+    public int getViewTypeCount() {
         return 2;
     }
 
-//    @Override
-//    public View newView(Context context, List<Track> values,ViewGroup parent){
-//
-//    }
-
-
     @Override
-    public View getView(int position,View convertView,ViewGroup parent){
+    public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolder viewHolder;
 
 
@@ -76,16 +70,13 @@ public class TrackAdapter extends ArrayAdapter<Preview>{
 
         viewHolder.titleText_.setText(getItem(position).getTitle_());
         viewHolder.descriptionText_.setText(getItem(position).getDescription_());
-        viewHolder.durationText_.setText(Double.toString(getItem(position).getDuration_()));
-        viewHolder.lengthText_.setText(Integer.toString(getItem(position).getLength_()));
+        viewHolder.durationText_.setText(UtilMethods.getUserFriendlyDuration(getItem(position).getDuration_(), getContext()));
+        viewHolder.lengthText_.setText(UtilMethods.getUserFriendlyLength(getItem(position).getLength_(), getContext()));
 
-        if (getItem(position).getIcon_()!= null) {
+        if (getItem(position).getIcon_() != null) {
             Bitmap bitmap = BitmapFactory.decodeByteArray(getItem(position).getIcon_(), 0, getItem(position).getIcon_().length);
             int width = bitmap.getWidth();
-            Bitmap bmp1 = UtilMethods.getRoundedCroppedBitmap(BitmapFactory.decodeByteArray(getItem(position).getIcon_(), 0, getItem(position).getIcon_().length), width);
-
-          //  Drawable a = getContext().getResources().getDrawable(R.drawable.round_place_ranevskya);
-           // viewHolder.icon_.setImageDrawable(a);
+            Bitmap bmp1 = UtilMethods.getRoundedCroppedBitmap(BitmapFactory.decodeByteArray(getItem(position).getIcon_(), 0, getItem(position).getIcon_().length), (int) (width * 0.7));
 
             viewHolder.icon_.setImageBitmap(bmp1);
         }

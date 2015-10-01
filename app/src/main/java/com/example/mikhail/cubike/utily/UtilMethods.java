@@ -1,5 +1,6 @@
 package com.example.mikhail.cubike.utily;
 
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
@@ -10,6 +11,8 @@ import android.graphics.PorterDuffXfermode;
 import android.graphics.Rect;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
+
+import com.example.mikhail.cubike.R;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -89,5 +92,17 @@ public class UtilMethods {
         Bitmap bitmap = ((BitmapDrawable) image).getBitmap();
         byte imageInByte[] = getBytesFromBitmap(bitmap);
         return imageInByte;
+    }
+
+    // Adds min to the duration value
+    public static String getUserFriendlyDuration(int duration,Context context){
+        String mins = (duration!=0) ? Integer.toString(duration) + " " +context.getResources().getString(R.string.duration_mins) : "";
+        return mins;
+    }
+
+    // Adds km to the duration length
+    public static String getUserFriendlyLength(int length,Context context){
+        String km = (length!=0) ? Integer.toString(length) + " " + context.getResources().getString(R.string.length_value) : "";
+        return km;
     }
 }

@@ -17,6 +17,7 @@ import com.example.mikhail.cubike.interfaces.UIactions;
 import com.example.mikhail.cubike.managers.RequestManager;
 import com.example.mikhail.cubike.model.Place;
 import com.example.mikhail.cubike.model.Preview;
+import com.example.mikhail.cubike.service.LocationService;
 import com.google.android.gms.maps.GoogleMap;
 
 import java.util.List;
@@ -40,6 +41,9 @@ public class MapActivity extends FragmentActivity implements UIactions {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_map);
          context_ = getApplicationContext();
+
+         // Start service
+         this.startService(new Intent(this, LocationService.class));
 
        //  helper_.getReadableDatabase();
 

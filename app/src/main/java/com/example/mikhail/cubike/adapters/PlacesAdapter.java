@@ -60,7 +60,7 @@ public class PlacesAdapter extends ArrayAdapter<Preview>{
         if (getItem(position).getIcon_() != null ){
             Bitmap bitmap = BitmapFactory.decodeByteArray(getItem(position).getIcon_(), 0, getItem(position).getIcon_().length);
             int width = bitmap.getWidth();
-          Bitmap bmp1 = UtilMethods.getRoundedCroppedBitmap(BitmapFactory.decodeByteArray(getItem(position).getIcon_(), 0, getItem(position).getIcon_().length),width);
+          Bitmap bmp1 = UtilMethods.getRoundedCroppedBitmap(BitmapFactory.decodeByteArray(getItem(position).getIcon_(), 0, getItem(position).getIcon_().length),(int)(width*0.7));
            // Bitmap bmp1 = BitmapFactory.decodeByteArray(getItem(position).getIcon_(), 0, getItem(position).getIcon_().length);
             viewHolder.icon_.setImageBitmap(bmp1);
         }
