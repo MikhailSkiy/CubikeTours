@@ -1,0 +1,41 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:tools="HTTP://SCHEMAS.ANDROID.COM/TOOLS"
+      tools:context="com.example.admin.moviesapp.activities.MainActivity">
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/cities"
+            android:icon="@drawable/ic_routes_grey"
+            android:title="@string/cities"/>
+        <item
+            android:id="@+id/weather_menu_btn"
+            android:icon="@drawable/ic_weather_partlycloudy_grey"
+            android:title="@string/weather"/>
+        <item
+            android:id="@+id/favorite_menu_btn"
+            android:icon="@drawable/ic_heart_outline_grey"
+            android:title="@string/favorite_tracks"/>
+        <item
+            android:id="@+id/profile_menu_btn"
+            android:icon="@drawable/ic_account_circle_grey"
+            android:title="@string/user_profile"/>
+
+        <item
+            android:id="@+id/achieves_menu_btn"
+            android:icon="@drawable/ic_star_grey"
+            android:title="@string/user_achieves"/>
+        <item
+            android:id="@+id/navigation_subheader"
+            android:title="@string/more">
+            <menu>
+                <item
+                    android:id="@+id/about_us_menu_btn"
+                    android:icon="@drawable/ic_information_outline_grey"
+                    android:title="@string/about_us"/>
+                <item
+                    android:id="@+id/settings_menu_btn"
+                    android:icon="@drawable/ic_settings_grey"
+                    android:title="@string/settings"/>
+            </menu>
+        </item>
+    </group>
+</menu>
