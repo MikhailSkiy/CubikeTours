@@ -44,6 +44,12 @@
     <string name="drawer_open">Open</string>
     <string name="drawer_close">Close</string>
 
+    <string name="freshman">Новичок</string>
+    <string name="student">Студент</string>
+    <string name="amatour">Любитель</string>
+    <string name="photo">Фотограф</string>
+    <string name="profi">Профи</string>
+    <string name="paparazzi">Папарацци</string>
 
 
 <!-- TODO: Remove or change this placeholder text -->

@@ -1,5 +1,6 @@
 package activities;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
@@ -33,6 +34,7 @@ public class CitiesActivity extends ActionBarActivity {
     private DrawerLayout mDrawerLayout;
     private ActionBarDrawerToggle mDrawerToggle;
     private NavigationView mainNavigationMenu_;
+    private static Context context_;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,13 +44,15 @@ public class CitiesActivity extends ActionBarActivity {
         recyclerView_ .setLayoutManager(new LinearLayoutManager(this));
         recyclerView_.setItemAnimator(new DefaultItemAnimator());
 
+        context_ = this.getApplicationContext();
+
        mainNavigationMenu_ = (NavigationView) findViewById(R.id.main_drawer);
 
-        mToolbar = (Toolbar) findViewById(R.id.app_bar);
-        mDrawerLayout = (DrawerLayout) findViewById(R.id.main_activity_drawer_layout);
-        mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, mToolbar, R.string.drawer_open, R.string.drawer_close);
-        mDrawerLayout.setDrawerListener(mDrawerToggle);
-        mDrawerToggle.syncState();
+//        mToolbar = (Toolbar) findViewById(R.id.app_bar);
+//        mDrawerLayout = (DrawerLayout) findViewById(R.id.main_activity_drawer_layout);
+//        mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, mToolbar, R.string.drawer_open, R.string.drawer_close);
+//        mDrawerLayout.setDrawerListener(mDrawerToggle);
+//        mDrawerToggle.syncState();
 
         mainNavigationMenu_.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -57,8 +61,8 @@ public class CitiesActivity extends ActionBarActivity {
                     // Show all movies
                     case R.id.achieves_menu_btn:
 
-                        Toast.makeText(CitiesActivity.this,"Pressed",Toast.LENGTH_LONG).show();
-                        Intent intent = new Intent(CitiesActivity.this,AchievmentActivity.class);
+                        Toast.makeText(CitiesActivity.this, "Pressed", Toast.LENGTH_LONG).show();
+                        Intent intent = new Intent(CitiesActivity.this, AchievmentActivity.class);
                         startActivity(intent);
                         break;
 
@@ -71,7 +75,7 @@ public class CitiesActivity extends ActionBarActivity {
 
 
 
-        setSupportActionBar(mToolbar);
+       // setSupportActionBar(mToolbar);
 
        DatabaseHelper dbHelper = new DatabaseHelper(this);
         dbHelper.openDataBase();
@@ -90,6 +94,10 @@ public class CitiesActivity extends ActionBarActivity {
                 });
 
         recyclerView_.setAdapter(cityAdapter_);
+    }
+
+    public static Context getContext(){
+        return context_;
     }
 
     @Override
