@@ -12,6 +12,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.example.mikhail.cubike.R;
 import com.example.mikhail.cubike.adapters.TrackAdapter;
@@ -48,9 +49,13 @@ public class TracksActivity extends FragmentActivity implements UIactions{
                 Log.v("Position", Integer.toString(position));
                 int itemId = previews_.get(position).getId_();
 
-                Intent intent = new Intent(TracksActivity.this, MapActivity.class);
-                intent.putExtra("SelectedItemId", itemId);
-                startActivity(intent);
+                if (position == 1) {
+                    Intent intent = new Intent(TracksActivity.this, MapActivity.class);
+                    intent.putExtra("SelectedItemId", itemId);
+                    startActivity(intent);
+                } else {
+                    Toast.makeText(TracksActivity.this,getResources().getString(R.string.track_not_finished_alert),Toast.LENGTH_SHORT).show();
+                }
             }
         });
 

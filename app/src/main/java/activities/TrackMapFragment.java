@@ -79,20 +79,20 @@ public class TrackMapFragment extends Fragment implements GoogleMap.OnMarkerClic
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Intent intentToFire =new Intent(ReceiverPositioningAlarm.ACTION_REFRESH_SCHEDULE_ALARM);
-        intentToFire.putExtra(ReceiverPositioningAlarm.COMMAND, ReceiverPositioningAlarm.SENDER_ACT_DOCUMENT);
-        getActivity().sendBroadcast(intentToFire);
-
-        OnNewLocationListener onNewLocationListener = new OnNewLocationListener() {
-            @Override
-            public void onNewLocationReceived(Location location) {
-                Log.v("Location","changed");
-                sendNotification(getView());
-               // ReceiverPositioningAlarm.clearOnNewLocationListener(this);
-            }
-        };
-        // start listening for new location
-        ReceiverPositioningAlarm.setOnNewLocationListener(onNewLocationListener);
+//        Intent intentToFire =new Intent(ReceiverPositioningAlarm.ACTION_REFRESH_SCHEDULE_ALARM);
+//        intentToFire.putExtra(ReceiverPositioningAlarm.COMMAND, ReceiverPositioningAlarm.SENDER_ACT_DOCUMENT);
+//        getActivity().sendBroadcast(intentToFire);
+//
+//        OnNewLocationListener onNewLocationListener = new OnNewLocationListener() {
+//            @Override
+//            public void onNewLocationReceived(Location location) {
+//                Log.v("Location","changed");
+//                sendNotification(getView());
+//               // ReceiverPositioningAlarm.clearOnNewLocationListener(this);
+//            }
+//        };
+//        // start listening for new location
+//        ReceiverPositioningAlarm.setOnNewLocationListener(onNewLocationListener);
     }
 
     @Override

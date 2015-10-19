@@ -43,7 +43,7 @@ public class MapActivity extends FragmentActivity implements UIactions {
          context_ = getApplicationContext();
 
          // Start service
-         this.startService(new Intent(this, LocationService.class));
+         //this.startService(new Intent(this, LocationService.class));
 
        //  helper_.getReadableDatabase();
 

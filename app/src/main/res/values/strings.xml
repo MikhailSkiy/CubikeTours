@@ -37,4 +37,6 @@
     <string name="title_activity_map">Таганрог Раневской</string>
     <string name="title_activity_cities">CitiesActivity</string>
     <string name="title_activity_details">DetailsActivity</string>
+
+    <string name="track_not_finished_alert">Этот маршрут находится в стадии разработки </string>
 </resources>
