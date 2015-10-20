@@ -1,13 +1,20 @@
 package activities;
 
+import android.app.Activity;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
@@ -31,7 +38,9 @@ import android.support.v4.app.NotificationCompat.WearableExtender;
 public class DetailsActivity extends AppCompatActivity {
 
     private DatabaseHelper helper_ = new DatabaseHelper(this);
-
+    private static final int REQUEST_CODE_CAPTURE_IMAGE = 1;
+    private Bitmap mBitmapToSave;
+    AlertDialog.Builder alertDialogBuilder;
 
 
    // DatabaseHelper helper_;
@@ -41,6 +50,10 @@ public class DetailsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_details);
+
+        alertDialogBuilder = new AlertDialog.Builder(this);
+        alertDialogBuilder.setMessage("Поздравляем! Вы получили новый навык! Весь список достижений смотрите в разделе \"Мои достижения\"");
+
 
         // Gets selected place id
         Intent intent = getIntent();
@@ -126,6 +139,43 @@ public class DetailsActivity extends AppCompatActivity {
         }
 
 
+    }
+
+    public void takePicture(View v){
+        startActivityForResult(new Intent(MediaStore.ACTION_IMAGE_CAPTURE),
+                REQUEST_CODE_CAPTURE_IMAGE);
+    }
+
+    @Override
+    protected void onActivityResult(final int requestCode, final int resultCode, final Intent data) {
+        switch (requestCode) {
+            case REQUEST_CODE_CAPTURE_IMAGE:
+                // Called after a photo has been taken.
+                if (resultCode == Activity.RESULT_OK) {
+                    // Store the image data as a bitmap for writing later.
+                    mBitmapToSave = (Bitmap) data.getExtras().get("data");
+                    int photoCount = getPhotoCount();
+                    photoCount=photoCount+1;
+                    putInfoIntoSharedPrefs(photoCount);
+                    alertDialogBuilder.show();
+                }
+                break;
+
+            default:
+                super.onActivityResult(requestCode, resultCode, data);
+        }
+    }
+
+    private void putInfoIntoSharedPrefs(int photoCount){
+        SharedPreferences.Editor preferences = getSharedPreferences("ach",MODE_PRIVATE).edit();
+        preferences.putInt("photo_count",photoCount);
+        preferences.commit();
+    }
+
+    private int getPhotoCount(){
+        SharedPreferences preferences = getSharedPreferences("ach",MODE_PRIVATE);
+        int photoCount = preferences.getInt("photo_count",0);
+        return photoCount;
     }
 
 

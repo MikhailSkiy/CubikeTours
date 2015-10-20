@@ -5,4 +5,5 @@ package com.example.mikhail.cubike.model;
  */
 public class Achievment {
     public String skill;
+    public String description;
 }

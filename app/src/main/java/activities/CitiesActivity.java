@@ -60,8 +60,6 @@ public class CitiesActivity extends ActionBarActivity {
                 switch (menuItem.getItemId()) {
                     // Show all movies
                     case R.id.achieves_menu_btn:
-
-                        Toast.makeText(CitiesActivity.this, "Pressed", Toast.LENGTH_LONG).show();
                         Intent intent = new Intent(CitiesActivity.this, AchievmentActivity.class);
                         startActivity(intent);
                         break;

@@ -51,8 +51,16 @@
     <string name="profi">Профи</string>
     <string name="paparazzi">Папарацци</string>
 
+    <string name="freshman_desc">Для получения этого навыка достаточно установить приложение!</string>
+    <string name="student_desc">Для получения звания "Студент" нужно сфотографировать от 1 до 5 достопримечательностей</string>
+    <string name="amatour_desc">Чтобы достичь уровня "Любитель" нужно сфотографировать 10 достопримечательностей и поделиться ими с друзьями!</string>
+    <string name="photo_desc">Все известные фотографы публикуют свои фото. Поделись своим шедевром с друзяьми в твиттере!</string>
+    <string name="profi_desc">Сделай фотографию для каждой достопримечательности в веломаршруте и стань Профи</string>
+    <string name="paparazzi_desc">Пройди все маршруты и сфотографируй каждый памятник в маршруте!</string>
 
-<!-- TODO: Remove or change this placeholder text -->
+
+
+    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_map">Таганрог Раневской</string>
     <string name="title_activity_cities">CitiesActivity</string>

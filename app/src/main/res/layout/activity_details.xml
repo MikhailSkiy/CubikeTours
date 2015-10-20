@@ -95,6 +95,7 @@
         android:id="@+id/fab"
         app:layout_anchor="@id/app_bar_layout"
         app:layout_anchorGravity="bottom|right|end"
+        android:onClick="takePicture"
         style="@style/FabStyle"/>
 
 </android.support.design.widget.CoordinatorLayout>
